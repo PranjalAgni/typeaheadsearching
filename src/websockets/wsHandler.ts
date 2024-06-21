@@ -1,5 +1,6 @@
 import { WebSocketServer, WebSocket } from "ws";
 import { SearchData } from "../interfaces";
+import searchTrie from "../services/search";
 
 export const setupWebSocket = (wss: WebSocketServer, store: SearchData[]) => {
   wss.on("connection", (ws: WebSocket) => {
@@ -7,9 +8,12 @@ export const setupWebSocket = (wss: WebSocketServer, store: SearchData[]) => {
     ws.on("message", (message: Buffer) => {
       const query = message.toString().trim();
       if (!query || query.length == 0) return;
-      const suggestions = store.filter((data) =>
-        data.name.toLowerCase().startsWith(query.toLowerCase())
+      const suggestions = searchTrie.getSuggestions(query.toLowerCase());
+      console.log(
+        "Suggestions from trie",
+        JSON.stringify(suggestions, null, 2)
       );
+
       const count = suggestions.length;
       if (count == 0) {
         ws.send("No results found");
@@ -18,7 +22,7 @@ export const setupWebSocket = (wss: WebSocketServer, store: SearchData[]) => {
         let start = 0;
         setInterval(() => {
           if (start >= count) return;
-          ws.send(`Topic: ${suggestions[start].name}`);
+          ws.send(`Topic: ${suggestions[start]}`);
           start += 1;
         }, 1000);
       }
