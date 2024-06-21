@@ -1,7 +1,6 @@
 # Typeahead Search System
 
-<img width="1440" alt="image" src="https://github.com/PranjalAgni/typeaheadsearching/assets/26196076/9d11b6ce-9790-49cf-819d-fa2f3ba48f25">
-
+![typeaheadsearch](https://github.com/PranjalAgni/typeaheadsearching/assets/26196076/afae5bae-33a3-4f34-99f1-4bafc104f6fc)
 
 Just building a typeahead search system with the leetcode problems solved as the data store and suggesting based on query.
 
