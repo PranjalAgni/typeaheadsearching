@@ -3,7 +3,7 @@ import { getContentsWithinDirectory, isBlackListed } from "../utils/files";
 
 export const scrapeData = async (): Promise<SearchData[]> => {
   const data: SearchData[] = [];
-  console.log("Scraping: ", process.env.LEETCODE_DIRECTORY);
+  console.log("Building trie: ", process.env.LEETCODE_DIRECTORY);
   const contents = await getContentsWithinDirectory(
     process.env.LEETCODE_DIRECTORY!
   );
