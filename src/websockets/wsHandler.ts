@@ -9,7 +9,7 @@ export const setupWebSocket = (wss: WebSocketServer, store: SearchData[]) => {
       const query = message.toString().trim();
       if (!query || query.length == 0) return;
       const suggestions = searchTrie.getSuggestions(query.toLowerCase());
-      console.log(
+      if (suggestions.length) console.log(
         "Suggestions from trie",
         JSON.stringify(suggestions, null, 2)
       );
