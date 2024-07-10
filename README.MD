@@ -15,4 +15,4 @@ https://docs.google.com/document/d/1EU73Q95cr-pYn_2um0YzDOafTbqgJMXbmLNqpGK9NEE/
 - Websockets
 - Sqlite
 - Node + Typescript
-- Trie
+- Trie data structure
